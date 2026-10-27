@@ -1,0 +1,9 @@
+Components under the Mozilla Public License 2.0
+
+  certifi   (its CA bundle and module)    https://pypi.org/project/certifi/
+  tqdm      (MPL-2.0 AND MIT)             https://pypi.org/project/tqdm/
+
+They are bundled unmodified, compiled to Python bytecode. Their Source Code Form
+is each project's source distribution of the version listed in
+THIRD_PARTY_LICENSES/README.md, on PyPI at the address above, and their licence
+texts are in certifi/ and tqdm/ here.

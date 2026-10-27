@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "subtitld-addon-ming"
+version = "26.10.1"
+description = "Subtitld add-on: text-to-speech and voice cloning with inclusionAI's Ming-3.0-tts"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Subtitld", email = "jbopen@gmail.com" }]
+requires-python = ">=3.10,<3.13"
+
+# What the vendored inference code (ming_addon/ming) imports. Upstream's own
+# requirements add accelerate, diffusers, x-transformers, loguru, soundfile and
+# pynini, which the vendored copy does without (see ming_addon/ming/README.md).
+# Versions are pinned in constraints.txt.
+dependencies = [
+    "torch>=2.5",
+    "torchaudio>=2.5",
+    "transformers>=5",
+    "tokenizers",
+    "safetensors",
+    "onnxruntime",
+    "inflect",
+    "numpy",
+    "certifi",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.10"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+ming-addon = "ming_addon.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["ming_addon*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["weights: needs the 2.99 GB of Ming-3.0-tts weights (local runs only)"]

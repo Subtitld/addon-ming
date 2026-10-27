@@ -1,0 +1,19 @@
+Microsoft C runtime — Windows builds only
+
+PyInstaller copies these files from the Python installation that froze the
+add-on, because CPython itself is linked against them:
+
+  vcruntime140.dll (and vcruntime140_1.dll, when present)
+      The Visual C++ runtime. Microsoft "Distributable Code" under the
+      Microsoft Visual Studio licence terms, which permit redistributing it
+      unmodified as part of an application:
+      https://learn.microsoft.com/visualstudio/releases/2022/redistribution
+
+  ucrtbase.dll and the api-ms-win-*.dll files
+      The Universal C Runtime, in the app-local copy Python ships with.
+      Windows 10 and later already include it. Microsoft documents deploying
+      these files with an application here:
+      https://learn.microsoft.com/cpp/windows/universal-crt-deployment
+
+The Whistle engine (libneedle3.dll) needs only the Universal C Runtime.
+THIRD_PARTY_LICENSES/README.md lists each of these files in this archive.

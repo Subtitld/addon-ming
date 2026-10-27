@@ -1,0 +1,9 @@
+LLVM runtime libraries — Apache-2.0 WITH LLVM-exception
+
+LICENSE.TXT is the LLVM project's licence (llvm-project, llvmorg-19.1.0).
+Upstream: https://llvm.org/
+
+On macOS the archive carries libc++ and libomp (LLVM's C++ standard library and
+OpenMP runtime), copied with PyTorch, which links them. They are redistributed
+unmodified. The LLVM exception lets them travel with a program under another
+licence.

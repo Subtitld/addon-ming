@@ -1,0 +1,18 @@
+libquadmath — LGPL-2.1-or-later (COPYING.LIB)
+
+The Linux archive carries one build of it, unmodified, renamed only by
+auditwheel, linked by the GCC Fortran runtime of numpy's OpenBLAS:
+
+  * libquadmath-2284e583*.so.0.0.0 (numpy.libs/, and a copy next to it):
+    AlmaLinux 8's libquadmath-8.5.0-28.el8_10.alma.1, GNU build-id
+    c1c5f8d61f17e5579c4e85718845b74e4b94116c.
+    Source package: gcc-8.5.0-28.el8_10.alma.1.src.rpm.
+
+It is linked dynamically, so it can be replaced by another build.
+
+Complete corresponding source: voxcpm-<version>-libquadmath-source.tar.gz,
+attached to the same GitHub release as this archive.
+tools/build_libquadmath_source.py builds it, and checks that every bundled
+libquadmath is this build.
+
+The macOS and Windows archives carry no libquadmath.

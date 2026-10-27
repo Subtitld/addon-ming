@@ -1,0 +1,14 @@
+# The versions the add-on was built and tested with. Install with
+#   pip install -e '.[build,dev]' -c constraints.txt
+# On Linux and Windows add --extra-index-url https://download.pytorch.org/whl/cpu
+# so torch comes as its CPU-only build.
+torch==2.14.1
+torchaudio==2.11.0
+transformers==5.20.1
+tokenizers==0.23.3
+safetensors==0.8.0
+huggingface-hub==2.3.0
+onnxruntime==1.31.1
+inflect==7.6.0
+numpy==2.5.4
+certifi==2026.10.23

@@ -1,0 +1,16 @@
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.spike/
+release-staging/
+*.zip
+*.zip.sha256
+.DS_Store
+report.xml
+frozen-report.xml
+sources.txt

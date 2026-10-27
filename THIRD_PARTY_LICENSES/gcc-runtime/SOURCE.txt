@@ -1,0 +1,14 @@
+GCC runtime libraries — GPL-3.0-or-later WITH GCC-exception-3.1
+
+Texts: COPYING3 and COPYING.RUNTIME, from the GCC source tree.
+Upstream: https://gcc.gnu.org/
+
+Bundled libraries:
+  * libgomp (GNU OpenMP): PyTorch's CPU thread pool on Linux.
+  * libstdc++ and libgcc_s: copied from the build machine, for the C++ libraries.
+  * libgfortran: from the numpy wheel, for OpenBLAS (on Windows, compiled into
+    the OpenBLAS DLL).
+
+The GCC Runtime Library Exception lets these libraries travel with a program
+under another licence without the program becoming GPL. No source offer is
+needed for the runtime libraries themselves.

@@ -1,0 +1,273 @@
+{
+  "manifest_version": 1,
+  "id": "ming",
+  "version": "26.10.1",
+  "display_name": "Ming-3.0-tts (offline, voice clone, 7 languages)",
+  "summary": "inclusionAI's Ming-3.0-tts: speaks Chinese, English, Japanese, Korean, German, French and Spanish at 44.1 kHz in the speaker's own voice, cloned from the video, in one of its built-in voices, or in a voice made from a description, with emotion and speed controls. Heavy: a 2.99 GB model downloaded on first use and about 5 GB of memory; on a CPU each second of speech takes about four seconds to make.",
+  "author": "Subtitld",
+  "homepage": "https://github.com/Subtitld/addon-ming",
+  "license": "Apache-2.0 (add-on); MIT (Ming-3.0-tts code and weights)",
+  "executable": "bin/ming-addon",
+  "protocol": 1,
+  "startup_timeout_sec": 60,
+  "platforms": [
+    "linux",
+    "macos",
+    "windows"
+  ],
+  "tasks": [
+    "tts.synthesize"
+  ],
+  "compute": "cpu",
+  "voice_clone": true,
+  "languages": [
+    "zh",
+    "en",
+    "ja",
+    "ko",
+    "de",
+    "fr",
+    "es"
+  ],
+  "voices": [
+    {
+      "id": "ming-clone",
+      "language": "*",
+      "display_name": "Speaker's own voice (cloned from the video)",
+      "requires": [
+        "voice_ref_audio"
+      ]
+    },
+    {
+      "id": "ming-us-emma",
+      "language": "*",
+      "display_name": "Emma (American woman)"
+    },
+    {
+      "id": "ming-uk-george",
+      "language": "*",
+      "display_name": "George (British man)"
+    },
+    {
+      "id": "ming-uk-charlotte",
+      "language": "*",
+      "display_name": "Charlotte (British woman)"
+    },
+    {
+      "id": "ming-ling-xiaorou",
+      "language": "*",
+      "display_name": "Ling Xiaorou (Chinese woman, clear and patient)"
+    },
+    {
+      "id": "ming-ling-kai",
+      "language": "*",
+      "display_name": "Ling Kai (Chinese man, warm late-night radio)"
+    },
+    {
+      "id": "ming-warm-woman",
+      "language": "*",
+      "display_name": "Warm woman"
+    },
+    {
+      "id": "ming-older-woman",
+      "language": "*",
+      "display_name": "Gentle older woman"
+    },
+    {
+      "id": "ming-calm-man",
+      "language": "*",
+      "display_name": "Calm man"
+    },
+    {
+      "id": "ming-young-man",
+      "language": "*",
+      "display_name": "Energetic young man"
+    },
+    {
+      "id": "ming-narrator",
+      "language": "*",
+      "display_name": "Narrator"
+    },
+    {
+      "id": "ming-described",
+      "language": "*",
+      "display_name": "Voice you describe (in Configure)"
+    }
+  ],
+  "models": [
+    {
+      "id": "ming-3.0-tts-0.5b",
+      "display_name": "Ming-3.0-tts (0.5B)",
+      "repo": "inclusionAI/Ming-3.0-tts-0.5B",
+      "revision": "7247f4c94a5b2e987404ed28a5cfec41b1a4ca61",
+      "size_mb": 2860,
+      "license": "MIT",
+      "bundled": false,
+      "default": true
+    }
+  ],
+  "disk_required_mb": 3400,
+  "ram_required_mb": 5120,
+  "config_schema": {
+    "fields": [
+      {
+        "key": "device",
+        "type": "select",
+        "label": "Inference device",
+        "default": "auto",
+        "options": [
+          {
+            "value": "auto",
+            "label": "Automatic (the CPU)"
+          },
+          {
+            "value": "cpu",
+            "label": "CPU"
+          },
+          {
+            "value": "mps",
+            "label": "Apple GPU (MPS), untested"
+          }
+        ],
+        "help": "This build runs on the CPU. The GPU of an Apple Silicon Mac may work but has not been tried. It does not use NVIDIA GPUs."
+      },
+      {
+        "key": "threads",
+        "type": "int",
+        "label": "CPU threads",
+        "default": 0,
+        "min": 0,
+        "max": 256,
+        "step": 1,
+        "help": "0 picks the performance cores on a CPU that also has efficiency cores, else one thread per core. Fewer leaves the computer more responsive while dubbing."
+      },
+      {
+        "key": "emotion",
+        "type": "select",
+        "label": "Emotion",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "As the voice speaks"
+          },
+          {
+            "value": "happy",
+            "label": "Happy"
+          },
+          {
+            "value": "sad",
+            "label": "Sad"
+          },
+          {
+            "value": "angry",
+            "label": "Angry"
+          },
+          {
+            "value": "fearful",
+            "label": "Fearful"
+          },
+          {
+            "value": "disgusted",
+            "label": "Disgusted"
+          },
+          {
+            "value": "surprised",
+            "label": "Surprised"
+          },
+          {
+            "value": "neutral",
+            "label": "Neutral"
+          }
+        ],
+        "help": "For the speaker's own voice and the described voices: speak every line with this emotion. It keeps only the speaker's timbre, not their way of speaking, and overrides the speed, pitch and volume below. Built-in voices ignore it."
+      },
+      {
+        "key": "speed",
+        "type": "select",
+        "label": "Speed",
+        "default": "normal",
+        "options": [
+          {
+            "value": "slow",
+            "label": "Slow"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "fast",
+            "label": "Fast"
+          }
+        ],
+        "help": "For the speaker's own voice and the described voices, when no emotion is set. Like the emotion, it keeps only the speaker's timbre."
+      },
+      {
+        "key": "pitch",
+        "type": "select",
+        "label": "Pitch",
+        "default": "normal",
+        "options": [
+          {
+            "value": "low",
+            "label": "Low"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ]
+      },
+      {
+        "key": "volume",
+        "type": "select",
+        "label": "Volume",
+        "default": "normal",
+        "options": [
+          {
+            "value": "low",
+            "label": "Low"
+          },
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "high",
+            "label": "High"
+          }
+        ]
+      },
+      {
+        "key": "voice_description",
+        "type": "string",
+        "label": "Voice description",
+        "help": "For the voice 'Voice you describe': who speaks and how, in a few words, for example 'An elderly woman, soft and warm voice, slow pace'. English or Chinese works for every language."
+      },
+      {
+        "key": "voice_ref_audio",
+        "type": "file",
+        "label": "Fallback reference clip",
+        "help": "Used by the speaker's own voice when Subtitld has no clip of the speaker to send: 3 to 10 seconds of one person speaking, WAV preferred."
+      },
+      {
+        "key": "voice_ref_text",
+        "type": "string",
+        "label": "Fallback reference transcript",
+        "help": "The exact words spoken in the fallback clip. With them the clone is closer to the speaker."
+      },
+      {
+        "key": "skip_ref_text",
+        "type": "bool",
+        "default": false,
+        "label": "Clone the timbre only",
+        "help": "Subtitld normally sends, with the speaker's clip, the subtitle text spoken in it, and Ming-3.0-tts then continues from the clip, which comes closest to the speaker. With this on, only the timbre is cloned. Try it if a dub into another language keeps the speaker's accent, or when the subtitles paraphrase the speech."
+      }
+    ]
+  }
+}

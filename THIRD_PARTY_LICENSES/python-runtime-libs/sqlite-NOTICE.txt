@@ -1,0 +1,6 @@
+SQLite — public domain
+
+CPython's sqlite3 module links SQLite (sqlite3.dll on Windows). Its authors
+have dedicated it to the public domain: https://sqlite.org/copyright.html
+It is redistributed unmodified, as the Python installation that froze the
+add-on ships it.
