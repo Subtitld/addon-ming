@@ -80,7 +80,7 @@ jobs:
                'torch_index': 'https://download.pytorch.org/whl/cpu'},
               # The catalog cannot tell Mac architectures apart: ship arm64, as
               # the other add-ons do. PyPI's macOS torch is the CPU + MPS build.
-              {'os': 'macos-14', 'platform_label': 'macos-arm64', 'exe_suffix': '',
+              {'os': 'macos-15', 'platform_label': 'macos-arm64', 'exe_suffix': '',
                'torch_index': 'https://pypi.org/simple'},
               {'os': 'windows-2022', 'platform_label': 'windows-x86_64', 'exe_suffix': '.exe',
                'torch_index': 'https://download.pytorch.org/whl/cpu'},
